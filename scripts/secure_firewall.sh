@@ -5,10 +5,10 @@
 # Update the package list
 sudo apt-get update
 # Install packages
-sudo apt-get install netfilter-persistent > /dev/null
+sudo apt-get install iptables-persistent > /dev/null
 
 if [ $? -ne 0 ]; then
-    echo "Failed to install netfilter-persistent, rules not applied"
+    echo "Failed to install iptables-persistent, rules not applied"
     exit 1
 fi
 
@@ -41,6 +41,9 @@ sudo iptables -A INPUT -p udp --sport 53 -j ACCEPT
 
 # Save the rules
 sudo netfilter-persistent save
+
+## Enable at statup
+sudo systemctl enable netfilter-persistent
 
 # Print active rules for verification
 echo "Current iptables rules:"
