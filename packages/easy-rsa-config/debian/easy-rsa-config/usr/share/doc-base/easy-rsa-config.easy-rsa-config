@@ -1,0 +1,20 @@
+Document: easy-rsa-config
+Title: Debian easy-rsa-config Manual
+Author: <insert document author here>
+Abstract: This manual describes what easy-rsa-config is
+ and how it can be used to
+ manage online manuals on Debian systems.
+Section: unknown
+
+Format: debiandoc-sgml
+Files: /usr/share/doc/easy-rsa-config/easy-rsa-config.sgml.gz
+
+Format: postscript
+Files: /usr/share/doc/easy-rsa-config/easy-rsa-config.ps.gz
+
+Format: text
+Files: /usr/share/doc/easy-rsa-config/easy-rsa-config.text.gz
+
+Format: HTML
+Index: /usr/share/doc/easy-rsa-config/html/index.html
+Files: /usr/share/doc/easy-rsa-config/html/*.html
