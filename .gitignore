@@ -1,0 +1,8 @@
+*.deb
+*.dsc
+*.changes
+*.build
+*.buildinfo
+*.xz
+*.log
+*.ex
