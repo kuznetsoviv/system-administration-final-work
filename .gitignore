@@ -6,3 +6,5 @@
 *.xz
 *.log
 *.ex
+.debhelper/
+*.gz
