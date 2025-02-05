@@ -18,9 +18,22 @@ set -e
 # the debian-policy package
 
 EASY_RSA_PATH="/usr/share/easy-rsa"
+EASY_RSA_CONFIG_VARS_PATH="/usr/share/easy-rsa-config/vars"
 USER_EASY_RSA_PATH="/home/$SUDO_USER/easy-rsa"
 
 setup_easy_rsa() {	 
+	check_easy_rsa
+    	mkdir -p "$USER_EASY_RSA_PATH"
+	echo "$EASY_RSA_PATH"/*
+	echo "$USER_EASY_RSA_PATH"
+	ln -s "$EASY_RSA_PATH"/* "$USER_EASY_RSA_PATH"
+	cp "$EASY_RSA_CONFIG_VARS_PATH" "$USER_EASY_RSA_PATH"
+	cd "$USER_EASY_RSA_PATH"
+	./easyrsa init-pki
+	./easyrsa build-ca	
+}	
+
+check_easy_rsa() {
 	if [ -d "$USER_EASY_RSA_PATH" ]; then
 		echo "Configuration for easy_rsa already exists. Do you want to rewrite it? (yes,no)"
 		read answer
@@ -30,13 +43,6 @@ setup_easy_rsa() {
 			exit 0
 		fi
 	fi			
-    	mkdir -p "$USER_EASY_RSA_PATH"
-	echo "$EASY_RSA_PATH"/*
-	echo "$USER_EASY_RSA_PATH"
-	ln -s "$EASY_RSA_PATH"/* "$USER_EASY_RSA_PATH"
-	cd "$USER_EASY_RSA_PATH"
-	./easyrsa init-pki
-	./easyrsa build-ca	
 }	
 
 case "$1" in
